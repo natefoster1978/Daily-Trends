@@ -2,7 +2,7 @@
 //get parametro url
 $q=$_GET["q"];
 
-//feed selecionado
+//feeds
 if($q=="El Pais") {
   $xml=("http://ep00.epimg.net/rss/elpais/portada.xml");
 } elseif($q=="El Mundo") {
@@ -27,7 +27,7 @@ echo("<p><a href='" . $channel_link
 echo("<br>");
 echo($channel_desc . "</p>");
 
-//get y output "<item>" elements
+//get y output "<item>" elementos
 $x=$xmlDoc->getElementsByTagName('item');
 for ($i=0; $i<=2; $i++) {
   $item_title=$x->item($i)->getElementsByTagName('title')
