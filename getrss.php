@@ -1,8 +1,8 @@
 <?php
-//get the q parameter from URL
+//get parametros url
 $q=$_GET["q"];
 
-//find out which feed was selected
+//feed selecionado
 if($q=="El Pais") {
   $xml=("http://ep00.epimg.net/rss/elpais/portada.xml");
 } elseif($q=="El Mundo") {
@@ -12,7 +12,7 @@ if($q=="El Pais") {
 $xmlDoc = new DOMDocument();
 $xmlDoc->load($xml);
 
-//get elements from "<channel>"
+//get elementos "<channel>"
 $channel=$xmlDoc->getElementsByTagName('channel')->item(0);
 $channel_title = $channel->getElementsByTagName('title')
 ->item(0)->childNodes->item(0)->nodeValue;
@@ -21,13 +21,13 @@ $channel_link = $channel->getElementsByTagName('link')
 $channel_desc = $channel->getElementsByTagName('description')
 ->item(0)->childNodes->item(0)->nodeValue;
 
-//output elements from "<channel>"
+//output elementos "<channel>"
 echo("<p><a href='" . $channel_link
   . "'>" . $channel_title . "</a>");
 echo("<br>");
 echo($channel_desc . "</p>");
 
-//get and output "<item>" elements
+//get y output "<item>" elementos
 $x=$xmlDoc->getElementsByTagName('item');
 for ($i=0; $i<=2; $i++) {
   $item_title=$x->item($i)->getElementsByTagName('title')
