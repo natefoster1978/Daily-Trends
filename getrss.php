@@ -2,7 +2,7 @@
 //get parametro url
 $q=$_GET["q"];
 
-//find out which feed was selected
+//feed selecionado
 if($q=="El Pais") {
   $xml=("http://ep00.epimg.net/rss/elpais/portada.xml");
 } elseif($q=="El Mundo") {
