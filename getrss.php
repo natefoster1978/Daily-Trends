@@ -1,8 +1,8 @@
 <?php
-//get parametros url
+//get parametro url
 $q=$_GET["q"];
 
-//feed selecionado
+//find out which feed was selected
 if($q=="El Pais") {
   $xml=("http://ep00.epimg.net/rss/elpais/portada.xml");
 } elseif($q=="El Mundo") {
@@ -27,7 +27,7 @@ echo("<p><a href='" . $channel_link
 echo("<br>");
 echo($channel_desc . "</p>");
 
-//get y output "<item>" elementos
+//get y output "<item>" elements
 $x=$xmlDoc->getElementsByTagName('item');
 for ($i=0; $i<=2; $i++) {
   $item_title=$x->item($i)->getElementsByTagName('title')
@@ -40,5 +40,7 @@ for ($i=0; $i<=2; $i++) {
   . "'>" . $item_title . "</a>");
   echo ("<br>");
   echo ($item_desc . "</p>");
+  $img = $x->item($i)->getElementsByTagName('enclosure');
+  echo "<img src=\"" . $img[0]->getAttribute('url') . "\">";
 }
-?> 
+?>
