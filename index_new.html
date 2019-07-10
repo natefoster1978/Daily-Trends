@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+  <head>
+
+    <title>Daily Trends Feed</title>
+
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script>
+            function showRSS(str) {
+              if (str.length==0) { 
+                document.getElementById("rssOutput").innerHTML="";
+                return;
+              }
+              if (window.XMLHttpRequest) {
+                // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp=new XMLHttpRequest();
+              } else {  // code for IE6, IE5
+                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+              }
+              xmlhttp.onreadystatechange=function() {
+                if (this.readyState==4 && this.status==200) {
+                  document.getElementById("rssOutput").innerHTML=this.responseText;
+                }
+              }
+              xmlhttp.open("GET","getrss.php?q="+str,true);
+              xmlhttp.send();
+            }
+            </script>
+
+  </head>
+
+  <body>
+
+     <h1>El Mundo y El Pais</h1>
+
+     <p><img= Avantio-Logo.png/>Avantio Noticias</p>
+     <form>
+            <select onchange="showRSS(this.value)">
+            <option value="">Elejir Feed:</option>
+            <option value="El Pais">El Pais Portada</option>
+            <option value="El Mundo">El Mundo Portada</option>
+            </select>
+            </form>
+            <br>
+            <div id="rssOutput">RSS-feeds:</div>
+
+  </body>
+
+</html>

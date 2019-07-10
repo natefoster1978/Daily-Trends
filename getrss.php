@@ -6,7 +6,7 @@ $q=$_GET["q"];
 if($q=="El Pais") {
   $xml=("http://ep00.epimg.net/rss/elpais/portada.xml");
 } elseif($q=="El Mundo") {
-  $xml=("https://e00-elmundo.uecdn.es/elmundo/rss/portada.xml");
+  $xml=("https://e00-elmundo.uecdn.es/elmundo/rss/espana.xml");
 }
 
 $xmlDoc = new DOMDocument();
@@ -41,6 +41,6 @@ for ($i=0; $i<=2; $i++) {
   echo ("<br>");
   echo ($item_desc . "</p>");
   $img = $x->item($i)->getElementsByTagName('enclosure');
-  echo "<img src=\"" . $img[0]->getAttribute('url') . "\">";
+  //echo "<img src=\"" . $img[0]->getAttribute('url') . "\">";
 }
-?>
+?> 
